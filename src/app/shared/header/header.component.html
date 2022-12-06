@@ -1,0 +1,54 @@
+<!-- menu -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">GameSort</a>
+
+    <!-- MenuBtn Hidden -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu Items -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/rooms" routerLinkActive="active"
+            >Salas</a
+          >
+        </li>
+      </ul>
+
+      <!-- Login & Register -->
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngIf="!loggedIn(); else salir">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active"
+              >Register</a
+            >
+          </li>
+        </ng-container>
+
+        <!-- Logout -->
+        <ng-template #salir>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logoutUser()" routerLink="">Logout</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

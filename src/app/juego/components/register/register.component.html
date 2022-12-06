@@ -1,0 +1,221 @@
+<div class="row">
+  <div class="col-md-9 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="text-center card-header-text">{{ title }}</h3>
+      </div>
+      <div class="card-body">
+        <form (submit)="register()" [formGroup]="formularioRegistro">
+          <!-- Fila-Form -->
+          <div class="row">
+            <div class="col">
+              <!-- name -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInputGroup1"
+                      placeholder="Name"
+                      autocomplete="off"
+                      name="name"
+                      required
+                      autofocus
+                      formControlName="name"
+                      [class.is-invalid]="
+                        formularioRegistro.get('name')?.invalid &&
+                        formularioRegistro.get('name')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup1">Name</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Username -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-user-cog"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInputGroup2"
+                      placeholder="Username"
+                      autocomplete="off"
+                      name="username"
+                      required
+                      formControlName="username"
+                      [class.is-invalid]="
+                        formularioRegistro.get('username')?.invalid &&
+                        formularioRegistro.get('username')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup2">Username</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="floatingInputGroup3"
+                      placeholder="email@email.com"
+                      autocomplete="off"
+                      name="email"
+                      required
+                      formControlName="email"
+                      [class.is-invalid]="
+                        formularioRegistro.get('email')?.invalid &&
+                        formularioRegistro.get('email')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup3">Email</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingInputGroup4"
+                      placeholder="Password"
+                      autocomplete="off"
+                      name="password"
+                      required
+                      formControlName="password"
+                      [class.is-invalid]="
+                        formularioRegistro.get('password')?.invalid &&
+                        formularioRegistro.get('password')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup4">Password</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end col -->
+            <div class="col">
+              <!-- DNI -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-id-card"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInputGroup5"
+                      placeholder="DNI"
+                      autocomplete="off"
+                      name="DNI"
+                      required
+                      formControlName="DNI"
+                      [class.is-invalid]="
+                        formularioRegistro.get('DNI')?.invalid &&
+                        formularioRegistro.get('DNI')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup5">DNI</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-phone"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInputGroup6"
+                      placeholder="Phone"
+                      autocomplete="off"
+                      name="phone"
+                      required
+                      formControlName="phone"
+                      [class.is-invalid]="
+                        formularioRegistro.get('phone')?.invalid &&
+                        formularioRegistro.get('phone')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup6">Phone</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-map"></i>
+                  </span>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInputGroup7"
+                      placeholder="Address"
+                      autocomplete="off"
+                      name="address"
+                      required
+                      formControlName="address"
+                      [class.is-invalid]="
+                        formularioRegistro.get('address')?.invalid &&
+                        formularioRegistro.get('address')?.touched
+                      "
+                    />
+                    <label for="floatingInputGroup7">Address</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <!-- Button Submit -->
+          <div class="row">
+            <div class="col text-center">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                [class.disabled]="formularioRegistro.invalid"
+              >
+                <i class="fas fa-user-plus"></i> Register
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="result">
+          <pre>{{ formularioRegistro.value | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

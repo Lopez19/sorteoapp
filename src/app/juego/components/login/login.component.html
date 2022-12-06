@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="text-center card-header-text">{{ title }}</h3>
+      </div>
+      <div class="card-body">
+        <form (submit)="login()" [formGroup]="formularioLogin">
+          <!-- Username -->
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user-cog"></i>
+              </span>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInputGroup2"
+                  placeholder="Username"
+                  autocomplete="off"
+                  name="username"
+                  required
+                  formControlName="username"
+                  [class.is-invalid]="
+                    formularioLogin.get('username')?.invalid &&
+                    formularioLogin.get('username')?.touched
+                  "
+                />
+                <label for="floatingInputGroup2">Username</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-lock"></i>
+              </span>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingInputGroup4"
+                  placeholder="Password"
+                  autocomplete="off"
+                  name="password"
+                  required
+                  formControlName="password"
+                  [class.is-invalid]="
+                    formularioLogin.get('password')?.invalid &&
+                    formularioLogin.get('password')?.touched
+                  "
+                />
+                <label for="floatingInputGroup4">Password</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button Submit -->
+          <div class="row">
+            <div class="col text-center">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                [class.disabled]="formularioLogin.invalid"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="result">
+          <pre>{{ formularioLogin.value | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

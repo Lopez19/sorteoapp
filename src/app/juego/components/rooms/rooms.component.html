@@ -1,0 +1,74 @@
+<div class="row">
+  <!-- Col Rooms -->
+  <div class="col-xl-9 col-sm-12">
+    <div class="row">
+      <!-- Col Card Rooms -->
+      <div
+        class="col-md-4 col-sm-12 mb-2"
+        *ngFor="let room of rooms; let i = index"
+      >
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h3 class="card-title">Sala - {{ i + 1 }} - {{ room.name }}</h3>
+            </div>
+            <div class="card-text">
+              <p class="card-text">
+                <span class="font-weight-bold">Jugadores: </span>
+                {{ room.participants.length }} / {{ room.maxParticipants }}
+              </p>
+              <p class="card-text">
+                <span class="font-weight-bold">Estado: </span>
+                <span
+                  class="badge bg-success"
+                  *ngIf="room.status; else ofline"
+                  >{{ "Online" }}</span
+                >
+                <ng-template #ofline>
+                  <span class="badge bg-danger">{{ "Offline" }}</span>
+                </ng-template>
+              </p>
+              <p class="card-text">
+                <span class="font-weight-bold">Creado: </span>
+                {{ room.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              class="btn btn-primary"
+              (click)="joinRoom(room)"
+              *ngIf="room.status; else btnoff"
+            >
+              Entrar
+            </button>
+
+            <ng-template #btnoff>
+              <button class="btn btn-danger" disabled>{{ "Ofline" }}</button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Col Ganadores -->
+  <div class="col-xl-3 col-sm-12">
+    <div class="card">
+      <div class="card-header text-center">Ultimos ganadores</div>
+      <div class="card-body">
+        <!-- Card Winnwer -->
+        <div class="card mb-1" *ngFor="let winner of winners">
+          <div class="card-body">
+            <div class="card-text">
+              <p class="card-text">
+                <span class="font-weight-bold">
+                  Ganador: {{ winner.name | titlecase | slice : 0 : 2 }} ****
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

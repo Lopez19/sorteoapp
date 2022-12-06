@@ -1,0 +1,27 @@
+{
+  "saldo": 0,
+  "_id": "63863f78a8c2dc2aadec026d",
+  "username": "Horacio",
+  "name": "Horacio Lopez Moreno",
+  "email": "h@gmail.com",
+  "password": "$2a$10$VlH71a7OX6RulYVbbVdJLuy7xaMklDh1YD5yFshEGbY0z99ah8wGK",
+  "DNI": "1006194292",
+  "phone": "3128762544",
+  "address": "Barrio vista hermosa",
+  "roles": [
+    {
+      "_id": "6386235bf54b0023279155e5",
+      "name": "moderator",
+      "createdAt": "2022-11-29T15:20:59.673Z",
+      "updatedAt": "2022-11-29T15:20:59.673Z"
+    },
+    {
+      "_id": "6386235bf54b0023279155e4",
+      "name": "admin",
+      "createdAt": "2022-11-29T15:20:59.673Z",
+      "updatedAt": "2022-11-29T15:20:59.673Z"
+    }
+  ],
+  "createdAt": "2022-11-29T17:20:56.032Z",
+  "updatedAt": "2022-11-29T17:20:56.032Z"
+}
