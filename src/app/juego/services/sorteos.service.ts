@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SorteosService {
   // Variables
-  private _url = 'http://localhost:3000/api';
+  private _url = 'https://sorteoapp-api-production.up.railway.app/api';
 
   // Constructor
   constructor(private http: HttpClient) {}
@@ -17,12 +17,17 @@ export class SorteosService {
   }
 
   // Método para obtener un sorteo
-  getSorteo(id: string) {
+  getSorteo(id: any) {
     return this.http.get<any>(`${this._url}/sorteos/${id}`);
   }
 
   // Método para unirse a un sorteo
   joinSorteo(id: string, data: any) {
     return this.http.put<any>(`${this._url}/sorteos/participantes/${id}`, data);
+  }
+
+  // Metodo para comenzar el sorteo
+  startSorteo(id: string) {
+    return this.http.put<any>(`${this._url}/sorteos/start/${id}`, {});
   }
 }

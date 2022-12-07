@@ -7,15 +7,20 @@
         class="col-md-4 col-sm-12 mb-2"
         *ngFor="let room of rooms; let i = index"
       >
-        <div class="card">
+        <div
+          class="card text-center animate__animated animate__flipInY border-start-0 border-end-0 border-primary"
+        >
+          <div class="card-header">
+            <h3 class="card-title">Sala - {{ i + 1 }} - {{ room.name }}</h3>
+          </div>
           <div class="card-body">
-            <div class="card-title">
-              <h3 class="card-title">Sala - {{ i + 1 }} - {{ room.name }}</h3>
-            </div>
             <div class="card-text">
               <p class="card-text">
                 <span class="font-weight-bold">Jugadores: </span>
-                {{ room.participants.length }} / {{ room.maxParticipants }}
+                <span class="badge bg-secondary"
+                  >{{ room.participants.length }} /
+                  {{ room.maxParticipants }}</span
+                >
               </p>
               <p class="card-text">
                 <span class="font-weight-bold">Estado: </span>
@@ -28,23 +33,37 @@
                   <span class="badge bg-danger">{{ "Offline" }}</span>
                 </ng-template>
               </p>
+
               <p class="card-text">
-                <span class="font-weight-bold">Creado: </span>
-                {{ room.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
+                <span class="font-weight-bold">Apuesta: </span>
+                <span class="badge bg-danger">{{ room.price | currency }}</span>
+              </p>
+
+              <p class="card-text">
+                <span class="font-weight-bold">Premio: </span>
+                <span class="badge bg-warning">{{
+                  room.reward | titlecase
+                }}</span>
               </p>
             </div>
           </div>
           <div class="card-footer">
             <button
-              class="btn btn-primary"
+              class="btn btn-primary w-50"
               (click)="joinRoom(room)"
-              *ngIf="room.status; else btnoff"
+              *ngIf="
+                room.maxParticipants > room.participants.length;
+                else btnoff
+              "
             >
               Entrar
             </button>
 
             <ng-template #btnoff>
-              <button class="btn btn-danger" disabled>{{ "Ofline" }}</button>
+              <button class="btn btn-danger" disabled>{{ "Llena" }}</button>
+              <button class="btn btn-success ms-1" (click)="verSala(room)">
+                {{ "Ver sala" }}
+              </button>
             </ng-template>
           </div>
         </div>
@@ -53,7 +72,7 @@
   </div>
   <!-- Col Ganadores -->
   <div class="col-xl-3 col-sm-12">
-    <div class="card">
+    <div class="card border-start-0 border-end-0 border-primary">
       <div class="card-header text-center">Ultimos ganadores</div>
       <div class="card-body">
         <!-- Card Winnwer -->

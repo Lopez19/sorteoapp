@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
 })
 export class AuthService {
   // Variables
-  private _registerUrl = 'http://localhost:3000/api';
+  private _registerUrl = 'https://sorteoapp-api-production.up.railway.app/api';
+  private _userOnline: any = {};
 
   // Constructor
   constructor(private http: HttpClient, private router: Router) {}
@@ -27,6 +28,11 @@ export class AuthService {
   loggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
+
+  getUser = () => {
+    this._userOnline = JSON.parse(localStorage.getItem('userOnline') || '{}');
+    return this._userOnline;
+  };
 
   getToken() {
     return localStorage.getItem('token');

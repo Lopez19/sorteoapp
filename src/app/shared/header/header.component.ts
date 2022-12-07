@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../juego/services/auth.service';
 
@@ -9,9 +9,12 @@ import { AuthService } from '../../juego/services/auth.service';
 })
 export class HeaderComponent {
   // Variables
-  constructor(private authService: AuthService, private router: Router) {}
+
+  // Constructor
+  constructor(public authService: AuthService, private router: Router) {}
 
   // Ciclo de vida
+  ngOnInit(): void {}
 
   // Métodos
   logoutUser(): void {

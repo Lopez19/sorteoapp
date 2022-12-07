@@ -1,1 +1,61 @@
-<p>room-online works!</p>
+<div class="row g-3">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">
+          Players
+          <span class="badge bg-warning">{{ jugadores.length }}</span>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3 text-center justify-content-center">
+          <div
+            class="col-12 col-md-3 col-lg-3"
+            *ngFor="let jugador of jugadores"
+          >
+            <div class="card bg-success text-white">
+              <div class="card-body">
+                <h5 class="card-title m-0">{{ jugador.number }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row g-3">
+          <div class="col-12">
+            <h5 class="card-title">
+              Tu numero:
+              <span class="badge bg-success">{{ numeroJugador }}</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">Comenzar Sorteo</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3 text-center">
+          <div class="col-12">
+            <h5>
+              Numero Ganador:
+              <span class="badge bg-success">{{ "50" }}</span>
+            </h5>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-outline-danger" (click)="btnPlay()">
+              <i class="fas fa-play"></i>
+              Comenzar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

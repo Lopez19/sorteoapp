@@ -18,5 +18,6 @@ export interface Sorteo {
 export interface Participant {
   name: string;
   id: string;
+  number: number;
   SorteoID: string;
 }

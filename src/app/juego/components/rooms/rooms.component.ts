@@ -78,10 +78,34 @@ export class RoomsComponent {
   }
 
   joinRoom(room: Sorteo) {
+    // Validar que el usuario este loggeado
+    if (!this.loggeado()) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Debes iniciar sesión para unirte a la sala',
+        icon: 'error',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login']);
+        }
+      });
+      return;
+    }
+
     this.getRoom(room._id);
 
+    // Validar que el usuario no este en la sala
+    if (
+      room.participants.some(
+        (participant: any) => participant.id === this.userOnline._id
+      )
+    ) {
+      this.router.navigate(['/room', room._id]);
+      return;
+    }
+
     // Numero aleatorio entre 1 y 50 (no repetido)
-    const Aleatorio = Math.floor(Math.random() * 50) + 1; // 1 - 50
+    const Aleatorio = Math.floor(Math.random() * room.maxParticipants) + 1; // 1 - 50
     let numeroAleatorio = Aleatorio;
 
     // Validar que el numero no este repetido
@@ -118,15 +142,53 @@ export class RoomsComponent {
           },
 
           error: (err) => {
-            Swal.fire({
-              title: 'Error',
-              text: `No se pudo unir a la sala, ${err.error.message} :(`,
-              icon: 'error',
-            }).then(() => {
-              this.router.navigate(['/room', room._id]);
-            });
+            console.log(err);
           },
         });
+      }
+    });
+  }
+
+  verSala(room: Sorteo) {
+    // Validar que el usuario este loggeado
+    if (!this.loggeado()) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Debes iniciar sesión para ver la sala',
+        icon: 'error',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login']);
+        }
+      });
+      return;
+    }
+
+    // Validar que el usuario no este en la sala
+    if (
+      room.participants.some(
+        (participant: any) => participant.id === this.userOnline._id
+      )
+    ) {
+      this.router.navigate(['/room', room._id]);
+      return;
+    }
+
+    // Swal
+    Swal.fire({
+      title: 'Ver sala',
+      text: `¿Estás seguro de ver la sala ${room.name}?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/room', room._id]);
+      }
+
+      if (result.isDismissed) {
+        this.router.navigate(['/rooms']);
       }
     });
   }
