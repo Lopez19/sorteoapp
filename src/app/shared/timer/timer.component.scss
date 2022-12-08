@@ -1,0 +1,22 @@
+.counter {
+  margin: 1rem 0 0 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: #000;
+  }
+}

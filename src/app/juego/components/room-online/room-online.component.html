@@ -1,5 +1,5 @@
 <div class="row g-3">
-  <div class="col-8">
+  <div class="col-12 col-md-8">
     <div class="card">
       <div class="card-header">
         <h5 class="card-title text-center">
@@ -34,26 +34,26 @@
     </div>
   </div>
 
-  <div class="col-4">
+  <div class="col-12 col-md-4">
     <div class="card">
       <div class="card-header">
         <h5 class="card-title text-center">Comenzar Sorteo</h5>
       </div>
       <div class="card-body">
-        <div class="row g-3 text-center">
+        <div class="row g-3 text-center justify-content-center">
           <div class="col-12">
-            <h5>
-              Numero Ganador:
-              <span class="badge bg-success">{{ "50" }}</span>
-            </h5>
+            <div class="card">
+              <div class="card-body">
+                <h5>
+                  Numero Ganador:
+                  <span class="badge bg-success">{{ ganador }}</span>
+                </h5>
+              </div>
+            </div>
           </div>
 
-          <div class="col-12">
-            <button class="btn btn-outline-danger" (click)="btnPlay()">
-              <i class="fas fa-play"></i>
-              Comenzar
-            </button>
-          </div>
+          <!-- Cuenta atras -->
+          <app-timer (ganador)="ganador = $event"></app-timer>
         </div>
       </div>
     </div>

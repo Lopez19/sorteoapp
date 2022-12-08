@@ -14,8 +14,10 @@ specifiers:
   '@angular/router': ^15.0.0
   '@popperjs/core': ^2.11.6
   '@schematics/angular': ^15.0.2
+  '@types/countdown': ^0.0.8
   '@types/jasmine': ~4.3.0
   bootstrap: 5.2.3
+  countdown: ^2.6.0
   jasmine-core: ~4.5.0
   karma: ~6.4.0
   karma-chrome-launcher: ~3.1.0
@@ -39,7 +41,9 @@ dependencies:
   '@angular/router': 15.0.2_ea22usrlx5m3srsxqo5of4y3om
   '@popperjs/core': 2.11.6
   '@schematics/angular': 15.0.2
+  '@types/countdown': 0.0.8
   bootstrap: 5.2.3_@popperjs+core@2.11.6
+  countdown: 2.6.0
   rxjs: 7.5.7
   sweetalert2: 11.6.15
   tslib: 2.4.1
@@ -1885,6 +1889,10 @@ packages:
     resolution: {integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==}
     dev: true
 
+  /@types/countdown/0.0.8:
+    resolution: {integrity: sha512-kpWa+wlrYcvgymkaOIF3i40MnSMRNdv91piNVmJ22Pnd4A3QJXu21ngTzHHnLqKVtCjGWfO0FZKSXb3XiGiTdA==}
+    dev: false
+
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -2819,6 +2827,10 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
     dev: true
+
+  /countdown/2.6.0:
+    resolution: {integrity: sha512-96C3ntj6/Q0KiikjRxDTrnw09VHI1x930gDTxBnTN8spEjySAT4ftvPXbM22Wn1pp5X0HvZ9uw6DOIf2d8g7rg==}
+    dev: false
 
   /critters/0.0.16:
     resolution: {integrity: sha512-JwjgmO6i3y6RWtLYmXwO5jMd+maZt8Tnfu7VVISmEWyQqfLpB8soBswf8/2bu6SBXxtKA68Al3c+qIG1ApT68A==}

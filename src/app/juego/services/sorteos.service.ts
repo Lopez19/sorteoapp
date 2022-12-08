@@ -26,8 +26,18 @@ export class SorteosService {
     return this.http.put<any>(`${this._url}/sorteos/participantes/${id}`, data);
   }
 
-  // Metodo para comenzar el sorteo
+  // Método para comenzar un sorteo
   startSorteo(id: string) {
     return this.http.put<any>(`${this._url}/sorteos/start/${id}`, {});
+  }
+
+  // Método para obtener el ganador
+  getWinner(id: string) {
+    return this.http.get<any>(`${this._url}/sorteos/winner/${id}`);
+  }
+
+  // Metodo para eliminar un sorteo
+  deleteSorteo(id: string) {
+    return this.http.delete<any>(`${this._url}/sorteos/${id}`);
   }
 }

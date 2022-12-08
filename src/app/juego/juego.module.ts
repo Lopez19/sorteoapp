@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { RoomOnlineComponent } from './components/room-online/room-online.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RoomOnlineComponent } from './components/room-online/room-online.compon
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    SharedModule,
   ],
 })
 export class JuegoModule {}

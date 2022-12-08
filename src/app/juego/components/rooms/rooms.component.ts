@@ -16,18 +16,7 @@ import { User } from '../../interfaces/User.interface';
 export class RoomsComponent {
   // Variables
   rooms: Sorteo[] = [];
-  winners: any[] = [
-    {
-      id: 1,
-      name: 'Juan',
-      number: 1,
-    },
-    {
-      id: 2,
-      name: 'Pedro',
-      number: 2,
-    },
-  ];
+  winners: any[] = [];
 
   userOnline: User = {};
   participant: any = {};
@@ -57,6 +46,11 @@ export class RoomsComponent {
     this.sorteosService.getSorteos().subscribe({
       next: (res: any) => {
         this.rooms = res.sorteos;
+
+        // Obtener los ganadores
+        this.rooms.forEach((room) => {
+          this.getWinner(room._id);
+        });
       },
       error: (err) => {
         console.log(err);
@@ -190,6 +184,25 @@ export class RoomsComponent {
       if (result.isDismissed) {
         this.router.navigate(['/rooms']);
       }
+    });
+  }
+
+  getWinner(id: string) {
+    this.sorteosService.getWinner(id).subscribe({
+      next: (res: any) => {
+        this.winners.push(res.sorteo);
+
+        // Eliminar objetos vacios
+        this.winners = this.winners.filter((winner) => {
+          return Object.keys(winner).length !== 0;
+        });
+
+        // Guardar en el localStorage
+        localStorage.setItem('winners', JSON.stringify(this.winners));
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
     });
   }
 }

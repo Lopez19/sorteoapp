@@ -15,6 +15,7 @@ export class RoomOnlineComponent {
   jugadores: Participant[] = [];
   userOnline: any = {};
   numeroJugador: number = 0;
+  ganador: string = 'No hay ganador...';
 
   // Constructor
   constructor(
@@ -55,18 +56,6 @@ export class RoomOnlineComponent {
       if (jugador.id === user._id) {
         this.numeroJugador = jugador.number;
       }
-    });
-  }
-
-  btnPlay() {
-    const id = this.activaRuta.snapshot.paramMap.get('id');
-    this.sorteosService.startSorteo(id!).subscribe({
-      next: (res: any) => {
-        console.log(res);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
     });
   }
 }

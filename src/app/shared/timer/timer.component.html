@@ -1,0 +1,46 @@
+<!-- Cuenta regresiva -->
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-text">
+        Tiempo restante:
+
+        <!-- Cuenta regresiva -->
+        <div class="counter">
+          <div class="counter-item bg-light shadow position-relative">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              dd
+            </span>
+            <span class="counter-number">{{ dias }}</span>
+          </div>
+          <div class="counter-item bg-light shadow position-relative">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              hh
+            </span>
+            <span class="counter-number">{{ horas }}</span>
+          </div>
+          <div class="counter-item bg-light shadow position-relative">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              mm
+            </span>
+            <span class="counter-number">{{ minutos }}</span>
+          </div>
+          <div class="counter-item bg-light shadow position-relative">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              ss
+            </span>
+            <span class="counter-number">{{ segundos }}</span>
+          </div>
+        </div>
+      </h5>
+    </div>
+  </div>
+</div>

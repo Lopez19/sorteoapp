@@ -3,7 +3,7 @@ export interface Sorteo {
   name: string;
   description: string;
   date: Date;
-  winner: string;
+  winner: {};
   participants: Participant[];
   price: number;
   status: boolean;

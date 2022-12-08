@@ -9,6 +9,7 @@
       >
         <div
           class="card text-center animate__animated animate__flipInY border-start-0 border-end-0 border-primary"
+          *ngIf="room.status === true"
         >
           <div class="card-header">
             <h3 class="card-title">Sala - {{ i + 1 }} - {{ room.name }}</h3>
@@ -23,15 +24,10 @@
                 >
               </p>
               <p class="card-text">
-                <span class="font-weight-bold">Estado: </span>
-                <span
-                  class="badge bg-success"
-                  *ngIf="room.status; else ofline"
-                  >{{ "Online" }}</span
-                >
-                <ng-template #ofline>
-                  <span class="badge bg-danger">{{ "Offline" }}</span>
-                </ng-template>
+                <span class="font-weight-bold">Fecha del sorteo: </span>
+                <span class="badge bg-success" *ngIf="room.date">
+                  {{ room.date | date }}
+                </span>
               </p>
 
               <p class="card-text">
@@ -71,21 +67,22 @@
     </div>
   </div>
   <!-- Col Ganadores -->
-  <div class="col-xl-3 col-sm-12">
+  <div class="col-xl-3 col-sm-12 text-center">
     <div class="card border-start-0 border-end-0 border-primary">
-      <div class="card-header text-center">Ultimos ganadores</div>
+      <div class="card-header">Ultimos ganadores</div>
       <div class="card-body">
         <!-- Card Winnwer -->
-        <div class="card mb-1" *ngFor="let winner of winners">
-          <div class="card-body">
-            <div class="card-text">
-              <p class="card-text">
-                <span class="font-weight-bold">
-                  Ganador: {{ winner.name | titlecase | slice : 0 : 2 }} ****
-                </span>
-              </p>
-            </div>
-          </div>
+        <div class="mb-1" *ngFor="let winner of winners">
+          <p class="card-text">
+            <span class="badge bg-success me-1">
+              Winner:
+              {{ winner.name | titlecase | slice : 0 : 10 }}
+              ****
+            </span>
+            <span class="badge bg-warning">
+              {{ winner.number | number }}
+            </span>
+          </p>
         </div>
       </div>
     </div>
